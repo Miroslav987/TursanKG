@@ -1,0 +1,19 @@
+.customAccordion {
+    :global(.ant-collapse-item) {
+        // margin-bottom: 10px;
+        border-radius: 10px !important;
+        border: 1px solid var(--color-btn-grey);
+    }
+    :global(.ant-collapse-item:last-child) {
+        border-radius: 10px !important;
+        border: 1px solid var(--color-btn-grey);
+    }
+
+    :global(.ant-collapse-expand-icon) {
+    font-size: 66px ;
+    height: -webkit-fill-available !important;
+    }
+    :global(.ant-collapse-body) {
+        font-size: 16px;
+    }
+}

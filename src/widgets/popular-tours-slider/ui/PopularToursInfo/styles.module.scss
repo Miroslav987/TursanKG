@@ -1,0 +1,35 @@
+.popularToursInfo {
+    position: absolute;
+    width: 595px;
+    z-index: 2;
+    left: 40px;
+    bottom: 130px;
+    padding: 20px;
+    border-radius: 12px;
+    backdrop-filter: blur(25px);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
+        linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: white;
+
+    .tourTitle {
+        font-size: 30px;
+    }
+    .tourLimit {
+        font-size: 20px;
+    }
+
+.tourTitle , .tourLimit  {
+        span {
+            font-weight: 600;
+        }
+}
+
+    .ourContact {
+        font-size: 18px;
+        color: var(--color-text-grey);
+    }
+
+}

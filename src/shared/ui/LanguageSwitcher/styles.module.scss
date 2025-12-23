@@ -1,0 +1,45 @@
+.trigger {
+    padding: 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.arrow {
+  color: #bfbfbf;
+}
+.dropdown {
+  background-color: var(--color-background-secondary) !important;
+  border: 1px solid var(--color-background-grey);
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+/* radio группа */
+.radioGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* текст radio */
+.radioGroup :global(.ant-radio-wrapper) {
+  color: #fff;
+}
+
+/* radio кружок */
+.radioGroup :global(.ant-radio-inner) {
+  background-color: transparent;
+  border-color: #fff;
+}
+
+/* активный radio */
+.radioGroup :global(.ant-radio-checked .ant-radio-inner) {
+  background-color: #fff;
+  border-color: #fff;
+}
+
+.radioGroup :global(.ant-radio-checked .ant-radio-inner::after) {
+  background-color: #000;
+}

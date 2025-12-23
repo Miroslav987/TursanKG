@@ -1,0 +1,22 @@
+.completed {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 17px;
+
+    p {
+        text-align: center;
+        font-size: 25px;
+    }
+
+    button {
+        background: #34c759;
+        border-color: #34c759;
+        &:hover {
+            background: #34c759 !important;
+            border-color: #34c759 !important;
+        }
+    }
+
+}

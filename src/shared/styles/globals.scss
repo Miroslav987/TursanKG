@@ -1,0 +1,96 @@
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Roboto-ExtraBold';
+  src: url('../fonts/Roboto-ExtraBold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+
+
+:root {
+  --color-background-primary: #FFFFFF;
+  --color-background-secondary: #1D1B26;
+  --color-background-black: #000000;
+  --color-background-grey: #80808066;
+
+  --color-text-primary: #1D1B26;
+  --color-text-secondary: #FFFFFF;
+  --color-text-grey: #BFBFBF;
+
+  --color-btn-blue: #0059B2;
+  --color-btn-cyan: #0073E5;
+  --color-btn-grey: #999999;
+  --color-btn-dark-grey: #A9A9A966;
+
+  --filter-white: grayscale(100%) brightness(0%) invert(1);
+  --filter-black: grayscale(100%) brightness(0%);
+}
+
+// @media (prefers-color-scheme: dark) {
+//   :root {
+//     --background: #0a0a0a;
+//     --foreground: #ededed;
+//   }
+// }
+
+// html,
+// body {
+//   max-width: 100vw;
+//   overflow-x: hidden;
+// }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-background-primary);
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+main {
+      margin-top: 135px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  padding: 0 40px;
+  max-width: 1440px;
+    margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+
+}
+
+h2 {
+  font-family: Montserrat;
+}
+section[id] {
+  scroll-margin-top: 150px; /* Высота вашего хедера + небольшой запас */
+}
+// @media (prefers-color-scheme: dark) {
+//   html {
+//     color-scheme: dark;
+//   }
+// }

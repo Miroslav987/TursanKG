@@ -1,0 +1,62 @@
+.tourBooking {
+    padding: 27px 10px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-weight: 500;
+    border: 1px solid var(--color-background-grey);
+
+
+
+    .title {
+        font-size: 30px;
+    }
+
+    .form {
+        padding: 10px 0;
+        border-top: 1px solid #E6E6E6;
+        border-bottom: 1px solid #E6E6E6;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .field {
+            .input {
+                padding: 10px;
+                font-size: 20px;
+                border-radius: 12px;
+            }
+            .select,.input {
+                font-size: 20px;
+                border-radius: 12px;
+            }
+            .label {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+        }
+        :global(.ant-picker .ant-picker-input >input) {
+            font-size: 20px ;
+
+        }
+
+        .info {
+            max-width: 440px;
+            color: var(--color-text-grey);
+            font-size: 20px;
+        }
+
+    }
+    .totalValue {
+        display: flex;
+        justify-content: center;
+        font-weight: 600;
+            font-size: 36px;
+    }
+
+    .submitBtn {
+        margin: auto;
+    }
+
+}

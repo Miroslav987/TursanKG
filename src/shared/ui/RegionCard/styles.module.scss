@@ -1,0 +1,88 @@
+.card {
+  max-width: 396px;
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background: #fff;
+  overflow: hidden;
+  font-family: Roboto-ExtraBold;
+  cursor: pointer;
+  // border-radius: 10px;
+      // box-shadow: 0px 0px 10px 0px rgb(61, 61, 61);
+}
+
+/* Общие стили для текста */
+.imageInText,
+.textWhite {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* ШРИФТ КАК НА КАРТИНКЕ */
+  // font-family: sans-serif; 
+  font-weight: 900;
+  font-size: 4.5rem;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0;
+  transition: transform 0.6s ease;
+}
+
+/* --- НИЖНИЙ СЛОЙ --- */
+.layerBottom {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: #fff;
+}
+
+.imageInText {
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-size: 100% 100%; /* Базовый размер */
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-size 0.6s ease, transform 0.6s ease;
+}
+
+/* --- ВЕРХНИЙ СЛОЙ --- */
+.layerTop {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  /* clip-path передаем из пропсов */
+}
+
+.fullImage {
+  position: absolute;
+  inset: 0;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-size 0.6s ease;
+}
+
+.textWhite {
+  color: #fff;
+}
+
+/* --- ЭФФЕКТ ПРИ НАВЕДЕНИИ --- */
+/* Вместо scale используем background-size для картинки, 
+   чтобы буквы не "толстели", а картинка внутри росла */
+
+.card:hover .imageInText {
+  background-size: 120% 120%;
+}
+
+.card:hover .fullImage {
+  background-size: 120% 120%;
+}
+
+/* Если хотите, чтобы и сами буквы чуть увеличивались (как на фото) */
+.card:hover .imageInText,
+.card:hover .textWhite {
+  transform: scale(1.05);
+}

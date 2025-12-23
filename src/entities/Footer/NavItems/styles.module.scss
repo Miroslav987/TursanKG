@@ -1,0 +1,36 @@
+.navItems {
+   
+    color: var(--color-text-secondary);
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    
+    @media screen and (max-width: 768px) {
+
+    }
+
+    .navColumn {
+        .title {
+            font-family: 24px;
+        }
+
+        .list {
+            
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            // list-style-type: none ;
+            padding-left: 0;
+            margin-top: 20px;
+
+            .item {
+                    display: flex;
+                    gap: 5px;
+                    align-items: center;
+                
+            }
+        }
+
+    }
+}

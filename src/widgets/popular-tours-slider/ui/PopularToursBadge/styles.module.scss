@@ -11,5 +11,10 @@
         font-weight: 200;
         color: var(--color-text-secondary);
     }
+
+                @media screen and (max-width: 768px) {
+                padding: 10px 15px;
+                
+    }
     
 }

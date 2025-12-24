@@ -1,0 +1,67 @@
+.burger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    position: relative;
+    z-index: 10;
+       @media screen and (max-width: 1050px) {
+        display: flex;
+    }
+}
+
+.burger span {
+    width: 100%;
+    height: 3px;
+    background: var(--color-background-primary);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.popoverOverlay {
+    // Убираем стандартные отступы внутри Popover
+    :global(.ant-popover-container) {
+        padding: 0 !important;
+        background-color: var(--color-background-secondary) !important;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    :global(.ant-popover-inner) {
+        padding: 0 !important;
+        background-color: var(--color-background-secondary) !important;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    .customMenu {
+        text-align: center;
+        border: none !important; // Убираем стандартную рамку Menu
+        background-color: var(--color-background-secondary)  !important;
+        min-width: 180px;
+    
+        :global(.ant-menu-item) {
+            color: var(--color-text-secondary) !important;
+            
+            &:hover {
+                background-color: var(--color-background-grey) !important;
+                color: var(--color-text-secondary) !important;
+            }
+        }
+    }
+}

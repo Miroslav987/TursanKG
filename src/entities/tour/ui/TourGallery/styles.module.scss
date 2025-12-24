@@ -54,10 +54,9 @@
         object-fit: cover;
       }
 
-      // Стиль для активной миниатюры (Swiper добавляет этот класс сам)
       &:global(.swiper-slide-thumb-active) {
         opacity: 1;
-        border-color: var(--color-primary, #007bff); // Цвет вашей темы
+        border-color: var(--color-primary, #007bff);
       }
     }
   }
@@ -67,7 +66,7 @@
   pointer-events: auto;
   width: 100px;
   height: 100px;
-  background-color: var(--color-background-secondary); 
+  background-color: var(--color-background-secondary);
   border: none;
   cursor: pointer;
   border-radius: 10px;
@@ -78,15 +77,20 @@
     width: 70px !important;
     height: 70px !important;
   }
-  
+
   &:hover {
     border: none !important;
-    background-color: var(--color-background-secondary) !important; 
+    background-color: var(--color-background-secondary) !important;
   }
 
   &:first-child {
     position: absolute;
     right: -65px;
+
+    @media screen and (max-width: 956px) {
+      right: -45px !important;
+
+    }
 
     img {
       position: absolute;
@@ -100,7 +104,8 @@
   // Правая кнопка
   &:last-child {
     left: -67px;
-        img {
+
+    img {
       position: absolute;
       top: -3px;
       left: 30px;

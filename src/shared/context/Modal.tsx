@@ -1,59 +1,56 @@
 'use client'
 
-import React, { createContext, useContext, useState } from 'react'
-
+import React, { createContext, useContext, useState, useCallback } from 'react'
 import { Modal } from 'antd'
-
 import styles from './styles.module.scss'
 
-type ModalContextType = {
-  openModal: (content: React.ReactNode, search?: boolean) => void
-  closeModal: () => void
-}
-
-type ModalProviderProps = {
-  children: React.ReactNode
-}
-
-interface initialStateType {
+interface ModalState {
   isOpen: boolean
   content: React.ReactNode | null
 }
 
-const SnackbarContext = createContext<ModalContextType | undefined>(undefined)
-
-const initialState = {
-  isOpen: false,
-  content: null,
+interface ModalContextType {
+  openModal: (content: React.ReactNode) => void
+  closeModal: () => void
 }
 
-const ModalProvider = (props: ModalProviderProps) => {
-  const [state, setState] = useState<initialStateType>(initialState)
+const ModalContext = createContext<ModalContextType | undefined>(undefined)
 
-  const openModal = (content: React.ReactNode) => {
+export const ModalProvider = ({ children }: { children: React.ReactNode }) => {
+  const [state, setState] = useState<ModalState>({
+    isOpen: false,
+    content: null,
+  })
+
+  const openModal = useCallback((content: React.ReactNode) => {
     setState({ isOpen: true, content })
-  }
+  }, [])
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setState((prev) => ({ ...prev, isOpen: false }))
-  }
+  }, [])
 
   return (
-    <SnackbarContext.Provider value={{ openModal, closeModal }}>
-      <Modal footer={true} className={styles.modal} centered open={state.isOpen} onOk={closeModal} onCancel={closeModal}>
+    <ModalContext.Provider value={{ openModal, closeModal }}>
+      {children}
+      <Modal
+        centered
+        destroyOnClose 
+        footer={null} 
+        open={state.isOpen}
+        onCancel={closeModal}
+        className={styles.modal}
+      >
         {state.content}
       </Modal>
-      {props.children}
-    </SnackbarContext.Provider>
+    </ModalContext.Provider>
   )
 }
 
-export default ModalProvider
-
 export const useModal = () => {
-  const context = useContext(SnackbarContext)
+  const context = useContext(ModalContext)
   if (!context) {
-    throw new Error('useSnackbar must be used within a ModalProvider')
+    throw new Error('useModal must be used within a ModalProvider')
   }
   return context
 }

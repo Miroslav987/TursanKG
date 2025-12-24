@@ -1,3 +1,6 @@
-// .modal {
-//     max-width:80% ;
-// }
+.modal {
+    :global(.ant-modal-container) {
+        padding-top: 50px;
+
+    }
+}

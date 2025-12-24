@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "@shared/styles/globals.scss"
 import Header from "@widgets/Header/ui";
 import Footer from "@widgets/Footer/ui";
-import ModalProvider from "@shared/context/Modal";
+import { ModalProvider } from "@shared/context/Modal";
 
 export const metadata: Metadata = {
   title: "TusranKG",

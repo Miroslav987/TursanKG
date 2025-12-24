@@ -35,14 +35,14 @@ const tours: TourType[] = [
 
 const AllTours: FC = () => {
   return (
-    <div className={`${styles.allTours} container`}>
+    <section className={`${styles.allTours} container`}>
       <h2>Все туры</h2>
       <Row className={styles.listTours} >
       {tours.map((tour,id) => (
             <TourCard key={id} tour={tour} id={id}/>
       ))}
       </Row>
-    </div>
+    </section>
   );
 };
 

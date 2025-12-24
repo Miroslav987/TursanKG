@@ -1,19 +1,22 @@
 .regionList {
-    margin-top: 80px;
-    padding: 0 40px;
 
     .list {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 40px 84px;
+
         @media screen and (max-width: 1400px) {
             gap: 40px 40px;
         }
+
         @media screen and (max-width: 1200px) {
             grid-template-columns: repeat(2, minmax(0, 1fr));
         }
+
         @media screen and (max-width: 850px) {
-            grid-template-columns: repeat(1, minmax(0, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
         }
     }
 

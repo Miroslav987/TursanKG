@@ -1,17 +1,16 @@
 .popuparToursSwiper {
-
-    position: relative;
+    
     max-width: 100%;
+    position: relative;
     background: var(--color-background-primary);
+    
     .swiperImage {
-        width:100% ;
-        
-        // height: 700px;
+        width: 100%;
+        height: calc(100vh - 135px);
+
         .slideImage {
             position: relative;
             width: 100%;
-            height: calc(100vh - 135px);
-            // height: 700px;
         }
     }
 }

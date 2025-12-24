@@ -55,7 +55,7 @@ const REGIONS = [
 
 export const RegionList = () => {
   return (
-    <div className={` ${styles.regionList} container`}>
+    <section className={` ${styles.regionList} container`}>
       <h2>Регионы</h2>
 
       <div className={styles.list}>
@@ -68,6 +68,6 @@ export const RegionList = () => {
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 };

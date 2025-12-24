@@ -3,6 +3,7 @@ import { TourGallery } from "@entities/tour/ui/TourGallery/TourGallery";
 import styles from "./styles.module.scss";
 import { TourBooking } from "@widgets/tour-booking/ui/TourBooking";
 import TourDescription from "@widgets/tour-description/ui/TourDescription";
+import OpenBook from "@widgets/tour-booking/ui/OpenBook/OpenBook";
 
 export default function TourDetails({ id }: { id: string }) {
 
@@ -30,6 +31,7 @@ export default function TourDetails({ id }: { id: string }) {
         <div className={styles.tourBook}>
           <TourBooking price={777} />
         </div>
+        <OpenBook price={777} />
       </div>
       <TourDescription description={desc} />
     </div>

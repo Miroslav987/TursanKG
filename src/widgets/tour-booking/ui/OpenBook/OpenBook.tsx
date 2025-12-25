@@ -1,4 +1,5 @@
 "use client";
+import styles from './styles.module.scss'
 import { useModal } from '@shared/context/Modal';
 import AppButton from '@shared/ui/AppButton';
 import { TourBooking } from '../TourBooking';
@@ -10,8 +11,8 @@ const OpenBook = ({price}:Props) => {
 
      const {openModal} = useModal()
     return (
-        <AppButton onClick={()=> openModal(<TourBooking price={price}/>)}>
-            Заброировать тур
+        <AppButton className={styles.OpenBook} onClick={()=> openModal(<TourBooking price={price}/>)}>
+            Забронировать тур
         </AppButton>
     );
 };

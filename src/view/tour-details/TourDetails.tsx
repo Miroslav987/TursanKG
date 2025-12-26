@@ -1,38 +1,36 @@
-// view/tour-details/TourDetails.tsx
+"use client";
+
 import { TourGallery } from "@entities/tour/ui/TourGallery/TourGallery";
 import styles from "./styles.module.scss";
 import { TourBooking } from "@widgets/tour-booking/ui/TourBooking";
-import TourDescription from "@widgets/tour-description/ui/TourDescription";
 import OpenBook from "@widgets/tour-booking/ui/OpenBook/OpenBook";
+import TourDescription from "@widgets/tour-description/ui/TourDescription";
+import { TourType } from "@entities/tour/model/types";
 
-export default function TourDetails({ id }: { id: string }) {
+type Props = {
+  tour: TourType;
+};
 
-  console.log(id);
-  
-  const imgTours = [
-    "https://vkplay.ru/hotbox/content_files/news/2021/06/24/2967e6e7bf2e4ea48d3bacb50c61d729.jpg",
-    "https://wallpaper.forfun.com/fetch/8e/8e1cb3994e6860f80ced8f98f314a986.jpeg",
-    "https://etalongame.com/wp-content/uploads/2018/12/forza-horizon-4-polnyj-spisok-mashin.jpg",
-    "https://4kwallpapers.com/images/wallpapers/bugatti-chiron-cozy-1920x1200-14235.jpg",
-    "https://vkplay.ru/hotbox/content_files/news/2021/06/24/2967e6e7bf2e4ea48d3bacb50c61d729.jpg",
-    "https://wallpaper.forfun.com/fetch/8e/8e1cb3994e6860f80ced8f98f314a986.jpeg",
-    "https://etalongame.com/wp-content/uploads/2018/12/forza-horizon-4-polnyj-spisok-mashin.jpg",
-    "https://4kwallpapers.com/images/wallpapers/bugatti-chiron-cozy-1920x1200-14235.jpg",
-  ];
-
-  const desc =
-    "Введение: Зыв Гор и Кочевых ТрадицийНаше путешествие начинается там, где встречаются небо и земля, где древние легенды оживают под лучами горного солнца. Мы отправляемся в Кыргызстан – страну, где каждый поворот дороги открывает новый, захватывающий дух пейзаж, а гостеприимство местных жителей согревает душу не хуже жаркого чая. Это не просто тур, это погружение в мир кочевой культуры, древних караван-сараев и кристально чистых озер, где каждая история рассказана ветрами, а каждый рассвет – это обещание нового открытия. День 1-2: Бишкек — Сердце Кыргызстана и Вкус Столицы Наш тур стартует в Бишкеке, динамичном сердце Кыргызстана, где советское наследие гармонично сочетается с современными веяниями. Мы прогуляемся по парку Ала-Тоо, увидим величественный памятник Манасу, попробуем первые национальные блюда, такие как манты и плов, и ощутим пульс этого уникального города. Вечером — погружение в атмосферу местного базара, где запахи специй и свежих фруктов создают неповторимый колорит. День 3-4: Иссык-Куль — Жемчужина Тянь-ШаняПереезд к легендарному озеру Иссык-Куль, второму по величине горному озеру в мире. Его бирюзовые воды, обрамленные снежными вершинами, завораживают. Мы посетим этнографическое село, где прикоснемся к традициям кочевников, увидим ловлю рыбы с орлами (если сезон позволяет), а также изучим древние петроглифы в ущелье Чолпон-Ата. Каждый день у озера – это новые оттенки синего и возможность насладиться тишиной и спокойствием. День 5-6: Каньон Сказки и «Город Сокровищ»Отправляемся в «Сказку» (Каньон «Сказка»), где причудливые формы скал напоминают драконов, замки и неведомых зверей – идеальное место для фотосессии. Затем – в Каракол, город с уникальной историей и православным собором, построенным без единого гвоздя. Здесь мы попробуем дунганскую кухню – смесь уйгурских, китайских и кыргызских традиций, что является отдельным кулинарным приключением. День 7-8: Джунгал-Тоо и Караван-Сарай Таш-Рабад Мы углубляемся в горы, к одному из самых мистических мест – Таш-Рабаду, древнему караван-сараю 15 века. Это крепость-гостиница, где останавливались купцы Великого Шёлкового Пути. Представьте себе истории, которые хранят эти камни! Мы проведем ночь в юрте неподалеку, слушая песни аксакалов и ощущая себя частью истории. День 9-10: Этно-Деревня и Возвращение в Цивилизацию (Ош) Переезд на юг страны, в древний город Ош, один из старейших в Центральной Азии. Подъем на священную гору Сулайман-Тоо, откуда открывается панорама города и плодородной долины. Здесь история переплетается с современной жизнью, а южная кухня с ее неповторимыми вкусами (например, знаменитый лепешка";
+export default function TourDetails({ tour }: Props) {
+  const desc = `Описание тура: ${tour.title}. Ограничение людей: ${tour.people_limit}.`;
 
   return (
     <div className={`container ${styles.tourDetails}`}>
-      <h2 className={styles.title}>Лодочная экскурсия в Бодрум</h2>
+      <h2 className={styles.title}>{tour.title}</h2>
       <div className={styles.galleryAndBooking}>
-        <TourGallery images={imgTours} />
-        <div className={styles.tourBook}>
-          <TourBooking price={777} />
+        <TourGallery images={tour.imgTours} />
+
+
+        <div className={styles.mobileOnly}>
+          <OpenBook tour={tour} />
         </div>
-        <OpenBook price={777} />
+
+
+        <div className={styles.desktopOnly}>
+          <TourBooking tour={tour} />
+        </div>
       </div>
+
       <TourDescription description={desc} />
     </div>
   );

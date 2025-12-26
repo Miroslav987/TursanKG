@@ -9,6 +9,7 @@
 
 
 
+
     .title {
         font-size: 30px;
     }
@@ -27,17 +28,21 @@
                 font-size: 20px;
                 border-radius: 12px;
             }
-            .select,.input {
+
+            .select,
+            .input {
                 font-size: 20px;
                 border-radius: 12px;
             }
+
             .label {
                 font-size: 24px;
                 margin-bottom: 10px;
             }
         }
+
         :global(.ant-picker .ant-picker-input >input) {
-            font-size: 20px ;
+            font-size: 20px;
 
         }
 
@@ -48,11 +53,12 @@
         }
 
     }
+
     .totalValue {
         display: flex;
         justify-content: center;
         font-weight: 600;
-            font-size: 36px;
+        font-size: 36px;
     }
 
     .submitBtn {

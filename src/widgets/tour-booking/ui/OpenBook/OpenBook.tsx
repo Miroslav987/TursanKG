@@ -3,15 +3,16 @@ import styles from './styles.module.scss'
 import { useModal } from '@shared/context/Modal';
 import AppButton from '@shared/ui/AppButton';
 import { TourBooking } from '../TourBooking';
+import { TourType } from '@entities/tour/model/types';
 type Props = {
-  price: number;
+  tour: TourType;
 };
 
-const OpenBook = ({price}:Props) => {
+const OpenBook = ({tour}:Props) => {
 
      const {openModal} = useModal()
     return (
-        <AppButton className={styles.OpenBook} onClick={()=> openModal(<TourBooking price={price}/>)}>
+        <AppButton className={styles.OpenBook} onClick={()=> openModal(<TourBooking tour={tour}/>)}>
             Забронировать тур
         </AppButton>
     );

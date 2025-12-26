@@ -20,10 +20,20 @@
             align-items: center;
         }
 
-        .tourBook {
-            @media screen and (max-width: 1300px) {
-                display: none;
-            }
-        }
+.mobileOnly {
+  display: none;
+
+  @media (max-width: 1300px) {
+    display: block;
+  }
+}
+
+.desktopOnly {
+  display: block;
+
+  @media (max-width: 1300px) {
+    display: none;
+  }
+}
     }
 }

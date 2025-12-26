@@ -9,15 +9,14 @@ import { Routes } from "@shared/consts/routes";
 
 export type TourCardProps = {
   tour: TourType;
-  id:number
 };
 
-const TourCard: FC<TourCardProps> = ({ tour,id }) => {
+const TourCard: FC<TourCardProps> = ({ tour }) => {
   return (
     <Card className={styles.tourCard}>
-      <Link href={Routes.TOURS(id)}>
+      <Link href={Routes.TOURS(tour.id)}>
       <Image
-        src={tour.img}
+        src={tour.imgTours[0]}
         alt={tour.title}
         fill
         className={styles.image}

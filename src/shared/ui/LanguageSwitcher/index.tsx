@@ -16,8 +16,6 @@ export const LanguageSwitcher = () => {
           value={lang}
           onChange={(e) => {
             setLang(e.target.value);
-            console.log("Выбран язык:", e.target.value);
-            // i18n.changeLanguage(e.target.value)
           }}
           className={styles.radioGroup}
         > 

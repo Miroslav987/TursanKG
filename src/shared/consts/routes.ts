@@ -9,5 +9,5 @@ export const Routes: IRoutes = {
     HOME: '#',
     FAQ: '#faq',
     CONTACT_US: '#contact_us',
-    TOURS: (id) => `/tours/${id}`
+    TOURS: (id) => `/tours/${id}/`
 }; 

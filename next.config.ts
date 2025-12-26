@@ -22,6 +22,11 @@ const nextConfig = {
         hostname: "4kwallpapers.com",
         pathname: "/**",
       },
+            {
+        protocol: "https",
+        hostname: "picsum.photos",
+        pathname: "/**",
+      },
     ],
   },
 };

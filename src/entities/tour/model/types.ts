@@ -1,6 +1,8 @@
 
 export type TourType = {
-    title:string
-    people_limit: string
-    img:string
-}
+  id: string | number;
+  title: string;
+  imgTours: string[];
+  people_limit: number;
+  price: number;
+};

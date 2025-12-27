@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
 
 
     const response = await axios.post(
-      "http://146.190.175.84:8000/api/payment/create",
+      "https://api.tursan.kg/api/payment/create",
       payload,
       {
         headers: {

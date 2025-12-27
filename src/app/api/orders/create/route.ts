@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
 
 
 
-    // 👉 тут позже будет БД (Mongo / Prisma / Firebase)
+    
     return NextResponse.json({
       success: true,
       order_id: crypto.randomUUID(),

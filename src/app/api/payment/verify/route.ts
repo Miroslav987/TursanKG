@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
 
     // 👉 проверяем статус платежа в банке
     const response = await axios.get(
-      `http://146.190.175.84:8000/api/payment/status/${payment_id}`,
+      `https://api.tursan.kg/api/payment/status/${payment_id}`,
       {
         headers: { Accept: "application/json" },
         timeout: 5000,

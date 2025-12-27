@@ -1,6 +1,7 @@
-"use client"; 
+/* eslint-disable react-hooks/purity */
+"use client";
 
-
+import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
 import Image from "next/image";
@@ -14,47 +15,53 @@ import PopularToursInfo from "../PopularToursInfo";
 import { tours } from "@entities/tour/config/tours";
 
 const PopularToursSlider = () => {
+  // 🔒 Храним рандомный индекс картинки для каждого тура
+  const randomImageIndexMap = useRef<Record<string, number>>({});
+
+  if (Object.keys(randomImageIndexMap.current).length === 0) {
+    tours.forEach((tour) => {
+      randomImageIndexMap.current[tour.id] =
+        Math.floor(Math.random() * tour.imgTours.length);
+    });
+  }
 
   const settingOurTeamSwiper = {
     slidesPerView: 1,
     loop: true,
     allowTouchMove: false,
-    speed: 2000, 
-    
-
-    effect: "fade" as const, 
+    speed: 2000,
+    effect: "fade" as const,
     fadeEffect: {
-      crossFade: true, 
+      crossFade: true,
     },
-    
-
     autoplay: {
       delay: 3000,
       disableOnInteraction: false,
     },
-
     modules: [Autoplay, EffectFade],
   };
 
   return (
-    <div className={`${styles.popuparToursSwiper} `}>
-      {/* <div className='container'> */}
-        {/* </div> */}
+    <div className={styles.popuparToursSwiper}>
       <Swiper {...settingOurTeamSwiper} className={styles.swiperImage}>
-        {tours.map((e, i) => (
-          <SwiperSlide key={i} className={styles.slideImage}>
-            <PopularToursBadge/>
-            <PopularToursInfo infoTour={e}/>
+        {tours.map((tour, i) => {
+          const imageIndex = randomImageIndexMap.current[tour.id];
+
+          return (
+            <SwiperSlide key={tour.id} className={styles.slideImage}>
+              <PopularToursBadge />
+              <PopularToursInfo infoTour={tour} />
 
               <Image
                 fill
                 style={{ objectFit: "cover" }}
-                src={e.imgTours[0]}
-                alt={e.title}
-                priority={i === 0} 
+                src={tour.imgTours[imageIndex]}
+                alt={tour.title}
+                priority={i === 0}
               />
-          </SwiperSlide>
-        ))}
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </div>
   );

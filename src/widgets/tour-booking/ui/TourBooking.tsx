@@ -16,7 +16,11 @@ export const TourBooking = ({ tour }: TourBookingProps) => {
   const [loading, setLoading] = useState(false);
   const [dates, setDates] = useState<[Dayjs, Dayjs] | null>(null);
   const [adults, setAdults] = useState(1);
-  const [children, setChildren] = useState(0);
+  // const [children, setChildren] = useState(0);
+  const groupCount = Math.ceil(adults / 4);
+
+
+
 
   const handlePay = async () => {
     try {
@@ -26,14 +30,14 @@ export const TourBooking = ({ tour }: TourBookingProps) => {
         ? `${dates[0].format("DD.MM.YYYY")} - ${dates[1].format("DD.MM.YYYY")}`
         : "не выбраны";
 
-      const detail = `${tour.title} | Даты: ${dateRange} | Взрослые: ${adults} | Дети: ${children}`;
+      const detail = `${tour.title} | Даты: ${dateRange} | Взрослые: ${adults}`;
 
 
       const returnUrl =`${window.location.origin}/payment/result`;
 
       const payload = {
-        amount: tour.price * 100,
-        currency: "417", 
+        amount: groupCount * tour.price * 100,
+        currency: "840", 
         detail,
         language: "EN",
         return_url: returnUrl,
@@ -84,18 +88,20 @@ export const TourBooking = ({ tour }: TourBookingProps) => {
             value={adults.toString()}
             className={styles.select}
             onChange={(val) => setAdults(Number(val))}
-          >
-            <Select.Option value="1">1</Select.Option>
-            <Select.Option value="2">2</Select.Option>
+            >
+            {Array.from({ length: 100 }, (_, i) => i + 1).map((n) => (
+              <Select.Option key={n} value={n.toString()}>{n}</Select.Option>
+            ))}
+            {/* <Select.Option value="2">2</Select.Option>
             <Select.Option value="3">3</Select.Option>
             <Select.Option value="4">4</Select.Option>
-            <Select.Option value="5">5</Select.Option>
+            <Select.Option value="5">5</Select.Option> */}
           </Select>
         </div>
 
         <div className={styles.field}>
-          <p className={styles.label}>Сколько будет детей?</p>
-          <Select
+          {/* <p className={styles.label}>Сколько будет детей?</p> */}
+          {/* <Select
             value={children.toString()}
             className={styles.select}
             onChange={(val) => setChildren(Number(val))}
@@ -106,14 +112,14 @@ export const TourBooking = ({ tour }: TourBookingProps) => {
             <Select.Option value="3">3</Select.Option>
             <Select.Option value="4">4</Select.Option>
             <Select.Option value="5">5</Select.Option>
-          </Select>
+          </Select> */}
         </div>
 
         <TourInfo />
       </div>
 
       <div className={styles.totalInfo}>
-        <span className={styles.totalValue}>{tour.price} сом</span>
+        <span className={styles.totalValue}>{ groupCount * tour.price } $</span>
       </div>
 
       <AppButton

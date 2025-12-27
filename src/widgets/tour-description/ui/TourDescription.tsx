@@ -10,8 +10,8 @@ const TourDescription: FC<TourDescriptionProps> = ({description}) => {
   return (
     <div className={styles.tourDescription}>
         <h3 className={styles.title}>Описание</h3>
-        <div className={styles.description}>
-            <p>{description} </p>
+        <div dangerouslySetInnerHTML={{ __html: description }} className={styles.description}>
+
         </div>
     </div>
   );

@@ -13,10 +13,10 @@ const PopularToursInfo: FC<PopularToursInfoType> = ({ infoTour }) => {
       <p className={styles.tourTitle}>
         Тур в <span>{infoTour.title}</span>
       </p>
-      <p className={styles.tourLimit}>
+      {/* <p className={styles.tourLimit}>
         Вместимость туристических групп составляет 
         <span> { infoTour.people_limit}</span> человек.
-      </p>
+      </p> */}
       <OpenBook tour={infoTour} />
       <p className={styles.ourContact}>
         Свяжитесь с нами через WhatsApp по номеру: +996(557)123-456 для более

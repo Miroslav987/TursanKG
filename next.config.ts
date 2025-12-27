@@ -4,28 +4,11 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "vkplay.ru",
-        pathname: "/**", 
+        hostname: "**", // Разрешает любые домены по HTTPS
       },
-            {
-        protocol: "https",
-        hostname: "wallpaper.forfun.com",
-        pathname: "/**",
-      },
-            {
-        protocol: "https",
-        hostname: "etalongame.com",
-        pathname: "/**",
-      },
-            {
-        protocol: "https",
-        hostname: "4kwallpapers.com",
-        pathname: "/**",
-      },
-            {
-        protocol: "https",
-        hostname: "picsum.photos",
-        pathname: "/**",
+      {
+        protocol: "http",
+        hostname: "**", // Разрешает любые домены по HTTP
       },
     ],
   },

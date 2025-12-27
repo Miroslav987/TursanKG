@@ -12,8 +12,6 @@ type Props = {
 };
 
 export default function TourDetails({ tour }: Props) {
-  const desc = `Описание тура: ${tour.title}. Ограничение людей: ${tour.people_limit}.`;
-
   return (
     <div className={`container ${styles.tourDetails}`}>
       <h2 className={styles.title}>{tour.title}</h2>
@@ -31,7 +29,7 @@ export default function TourDetails({ tour }: Props) {
         </div>
       </div>
 
-      <TourDescription description={desc} />
+      <TourDescription description={tour.description} />
     </div>
   );
 }

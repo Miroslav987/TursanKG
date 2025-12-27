@@ -12,7 +12,7 @@ const OpenBook = ({tour}:Props) => {
 
      const {openModal} = useModal()
     return (
-        <AppButton className={styles.OpenBook} onClick={()=> openModal(<TourBooking tour={tour}/>)}>
+        <AppButton className={styles.OpenBook} onClick={()=> openModal( <TourBooking  tour={tour}/>,`${tour.title}`)}>
             Забронировать тур
         </AppButton>
     );

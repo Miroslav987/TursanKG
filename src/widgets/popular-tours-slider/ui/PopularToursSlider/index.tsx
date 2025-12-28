@@ -15,7 +15,6 @@ import PopularToursInfo from "../PopularToursInfo";
 import { tours } from "@entities/tour/config/tours";
 
 const PopularToursSlider = () => {
-  // 🔒 Храним рандомный индекс картинки для каждого тура
   const randomImageIndexMap = useRef<Record<string, number>>({});
 
   if (Object.keys(randomImageIndexMap.current).length === 0) {

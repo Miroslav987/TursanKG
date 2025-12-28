@@ -1,12 +1,16 @@
 "use client";
 
 import React, { useState } from "react";
-import { Menu, Popover } from "antd";
+import { Button, Menu, Popover } from "antd";
 import { usePathname, useRouter } from "next/navigation";
 import { scrollToElement } from "@shared/lib/scroll/scrollTo";
 import styles from "./styles.module.scss";
+import { useModal } from "@shared/context/Modal";
+import { tourCustom } from "@widgets/all-tours/ui";
+import { TourCustomBooking } from "@widgets/tour-custom-booking/ui/TourCustomBooking";
 
 const BurgerMenu: React.FC = () => {
+    const {openModal} = useModal()
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
@@ -36,6 +40,12 @@ const BurgerMenu: React.FC = () => {
   };
 
   const menuContent = (
+
+    <div style={{
+      display:"flex",
+      flexDirection:'column',
+      paddingBottom:'10px'
+    }}>
     <Menu
       selectable={false}
       className={styles.customMenu}
@@ -45,6 +55,9 @@ const BurgerMenu: React.FC = () => {
         label: item.name,
       }))}
     />
+
+      <Button style={{margin:'auto'}} onClick={()=>(openModal(<TourCustomBooking tour={tourCustom}/>),setOpen(false))}>Выборочный Тур</Button>
+    </div>
   );
 
   return (

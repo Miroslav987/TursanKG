@@ -15,6 +15,7 @@ const Header: FC= () => {
         <AppLogo/>
         <NavItems/>
         <BurgerMenu/>
+      
       </nav>
     </header>
   );

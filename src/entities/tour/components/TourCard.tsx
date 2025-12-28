@@ -4,17 +4,17 @@ import { FC } from "react";
 import { TourType } from "../model/types";
 import { Card } from "antd";
 import Image from "next/image";
-import Link from "next/link";
-import { Routes } from "@shared/consts/routes";
+// import Link from "next/link";
+// import { Routes } from "@shared/consts/routes";
 
 export type TourCardProps = {
-  tour: TourType;
+  tour: TourType ;
 };
 
 const TourCard: FC<TourCardProps> = ({ tour }) => {
   return (
-    <Card className={styles.tourCard}>
-      <Link href={Routes.TOURS(tour.id)}>
+    <Card  className={styles.tourCard} >
+      
       <Image
         src={tour.imgTours[0]}
         alt={tour.title}
@@ -26,7 +26,6 @@ const TourCard: FC<TourCardProps> = ({ tour }) => {
       <div className={styles.overlay}>
         <h3>{tour.title}</h3>
       </div>
-      </Link>
     </Card>
   );
 };

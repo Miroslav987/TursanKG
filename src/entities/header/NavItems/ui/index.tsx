@@ -5,11 +5,15 @@ import { usePathname, useRouter } from "next/navigation";
 import styles from "./styles.module.scss";
 import { scrollToElement } from "@shared/lib/scroll/scrollTo";
 import AppButton from "@shared/ui/AppButton";
+import { tourCustom } from "@widgets/all-tours/ui";
+import { TourCustomBooking } from "@widgets/tour-custom-booking/ui/TourCustomBooking";
+import { useModal } from "@shared/context/Modal";
 
 const NavItems: FC = () => {
   const [active, setActive] = useState<string>("");
   const pathname = usePathname();
   const router = useRouter();
+  const {openModal} = useModal()
 
   const navItems = [
     { name: "Главная страница", href: "#" },
@@ -48,6 +52,7 @@ const handleClick = (href: string) => {
           {nav.name}
         </AppButton>
       ))}
+      <AppButton onClick={()=>openModal(<TourCustomBooking tour={tourCustom}/>)}>Выборочный Тур</AppButton>
     </div>
   );
 };

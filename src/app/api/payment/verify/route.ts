@@ -11,13 +11,14 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.tursan.kg";
 
-    // 👉 проверяем статус платежа в банке
+
     const response = await axios.get(
-      `https://api.tursan.kg/api/payment/status/${payment_id}`,
+      `${API_BASE_URL}/api/payment/status/${payment_id}`,
       {
         headers: { Accept: "application/json" },
-        timeout: 5000,
+        timeout: 10000, 
       }
     );
 

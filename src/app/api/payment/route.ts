@@ -21,17 +21,20 @@ export async function POST(req: NextRequest) {
 
 
 
-    const response = await axios.post(
-      "https://api.tursan.kg/api/payment/create",
-      payload,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        timeout: 10000, 
-      }
-    );
+
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.tursan.kg";
+
+const response = await axios.post(
+  `${API_BASE_URL}/api/payment/create`, 
+  payload,
+  {
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    timeout: 10000, 
+  }
+);
 
 
     return NextResponse.json(response.data);

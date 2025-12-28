@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   description: "Откройте Кыргызстан с TursanKG: авторские туры, поездки на Иссык-Куль, конные прогулки и джип-туры. Актуальные цены 2024-2025, отзывы и удобное онлайн-бронирование.",
 
 
+
   keywords: [
     "туры в Кыргызстан", 
     "отдых на Иссык-Куле", 
@@ -24,6 +25,10 @@ export const metadata: Metadata = {
     "гид по Киргизии",
     "бронирование туров онлайн"
   ],
+
+    verification: {
+    google: "GnqoICP3DkOE1RmjobY-MzfflXj8uaQpqtWMBlZ4r9Q",
+  },
 
 
   openGraph: {
@@ -81,7 +86,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ru">
       <body >
         <ModalProvider>
         <Header/>

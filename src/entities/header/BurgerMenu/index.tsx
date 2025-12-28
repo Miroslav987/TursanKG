@@ -13,7 +13,7 @@ const BurgerMenu: React.FC = () => {
 
   const navItems = [
     { name: "Главная", href: "#" },
-    { name: "Вопросы", href: "#faq" },
+    // { name: "Вопросы", href: "#faq" },
     { name: "Связаться с нами", href: "#contact_us" },
   ];
 

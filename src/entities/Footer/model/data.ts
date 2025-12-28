@@ -1,3 +1,4 @@
+import { Routes } from "@shared/consts/routes"
 
 interface Info {
     text:string
@@ -14,66 +15,66 @@ export const navItems:NavItemsType[] =[
     {
         title:"Контакты",
         info:[
+            // {
+            //     text:"Район Селимие,улица Тархан, Османгази, Бурса / Турция",
+            //     icon:"geo",
+            //     path:""
+            // },
             {
-                text:"Район Селимие,улица Тархан, Османгази, Бурса / Турция",
-                icon:"geo",
-                path:""
-            },
-            {
-                text:"0537 000 00 00",
+                text:"+996 505 150 470",
                 icon:"phone",
-                path:""
+                path:"https://wa.me/996505150470"
             },
-            {
-                text:"info@websitedemolari.com",
-                icon:"email",
-                path:""
-            },
+            // {
+            //     text:"info@websitedemolari.com",
+            //     icon:"email",
+            //     path:""
+            // },
         ]
     },
-    {
-        title:"Регионы",
-        info:[
-            {
-                text:"Стамбул",
-                path:""
-            },
-            {
-                text:"Греческие острова",
-                path:""
-            },
-            {
-                text:"Озеро Баликли/Урфа",
-                path:""
-            },
-            {
-                text:"Бодрум",
-                path:""
-            },
-            {
-                text:"Фетхийе/Олудениз",
-                path:""
-            },
-        ]
-    },
+    // {
+    //     title:"Регионы",
+    //     info:[
+    //         {
+    //             text:"Стамбул",
+    //             path:""
+    //         },
+    //         {
+    //             text:"Греческие острова",
+    //             path:""
+    //         },
+    //         {
+    //             text:"Озеро Баликли/Урфа",
+    //             path:""
+    //         },
+    //         {
+    //             text:"Бодрум",
+    //             path:""
+    //         },
+    //         {
+    //             text:"Фетхийе/Олудениз",
+    //             path:""
+    //         },
+    //     ]
+    // },
     {
         title:"Туры",
         info:[
             {
-                text:"Экскурсия по Стамбулу",
-                path:""
+                text:"5 дневный тур",
+                path:Routes.TOURS('1')
             },
             {
-                text:"Поездка на Греческие острова",
-                path:""
+                text:"10 дневный тур",
+                path:Routes.TOURS('2')
             },
             {
-                text:"Тур по Баликли/Урфа",
-                path:""
+                text:"20 дневный тур",
+                path:Routes.TOURS('3')
             },
             {
-                text:"Тур в Анталию",
-                path:""
+                text:"30 дневный тур",
+                path:Routes.TOURS('4')
             },
         ]
     },

@@ -20,8 +20,6 @@ export const TourBooking = ({ tour }: TourBookingProps) => {
   const groupCount = Math.ceil(adults / 4);
 
 
-
-
   const handlePay = async () => {
     try {
       setLoading(true);
@@ -30,7 +28,7 @@ export const TourBooking = ({ tour }: TourBookingProps) => {
         ? `${dates[0].format("DD.MM.YYYY")} - ${dates[1].format("DD.MM.YYYY")}`
         : "не выбраны";
 
-      const detail = `${tour.title} | Даты: ${dateRange} | Взрослые: ${adults}`;
+      const detail = `${tour.title} | Даты: ${dateRange} | Людей: ${adults}`;
 
 
       const returnUrl =`${window.location.origin}/payment/result`;
@@ -83,7 +81,7 @@ export const TourBooking = ({ tour }: TourBookingProps) => {
         </div>
 
         <div className={styles.field}>
-          <p className={styles.label}>Сколько будет взрослых?</p>
+          <p className={styles.label}>Сколько будет людей?</p>
           <Select
             value={adults.toString()}
             className={styles.select}

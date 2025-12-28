@@ -13,7 +13,7 @@ const NavItems: FC = () => {
 
   const navItems = [
     { name: "Главная страница", href: "#" },
-    { name: "Часто задаваемые вопросы", href: "#faq" },
+    // { name: "Часто задаваемые вопросы", href: "#faq" },
     { name: "Связаться с нами", href: "#contact_us" },
   ];
 

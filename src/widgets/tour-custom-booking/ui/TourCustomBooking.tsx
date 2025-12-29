@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./styles.module.scss";
-import {  InputNumber, message } from "antd";
+import { InputNumber, message } from "antd";
 import AppButton from "@shared/ui/AppButton";
 import { useState } from "react";
 import { TourType } from "@entities/tour/model/types";
@@ -15,6 +15,9 @@ export const TourCustomBooking = ({ tour }: TourBookingProps) => {
   const [loading, setLoading] = useState(false);
   const [customPrice, setCustomPrice] = useState<number | null>(null);
 
+  // считаем один раз
+  const totalKgs = customPrice ? customPrice * USD_TO_KGS : 0;
+
   const handlePay = async () => {
     if (!customPrice || customPrice <= 0) {
       message.warning("Пожалуйста, укажите корректную сумму");
@@ -24,15 +27,12 @@ export const TourCustomBooking = ({ tour }: TourBookingProps) => {
     try {
       setLoading(true);
 
-
-
       const detail = `${tour.title} | Оплата пользователем`;
       const returnUrl = `${window.location.origin}/payment/result`;
 
       const payload = {
-       
-        amount: customPrice * 100,
-        currency: "417", 
+        amount: Math.round(totalKgs * 100), // сом * 100
+        currency: "417",
         detail,
         language: "EN",
         return_url: returnUrl,
@@ -52,7 +52,7 @@ export const TourCustomBooking = ({ tour }: TourBookingProps) => {
       }
 
       window.location.href = data.proceed_url;
-    } catch (e: any) {
+    } catch (e) {
       console.error("FULL ERROR 👉", e);
       message.error("Ошибка оплаты");
     } finally {
@@ -65,29 +65,36 @@ export const TourCustomBooking = ({ tour }: TourBookingProps) => {
       <h3 className={styles.title}>Оплата</h3>
 
       <div className={styles.form}>
-
-
         <div className={styles.field}>
-          <p className={styles.label}>Введите сумму к оплате в СОМ</p>
+          <p className={styles.label}>
+            Сумма к оплате (указывается в долларах)
+          </p>
+
           <InputNumber
             className={styles.input}
             min={1}
             value={customPrice}
             onChange={(val) => setCustomPrice(val)}
-            placeholder="Введите сумму в СОМ"
-            style={{ width: '100%' }}
+            placeholder="Введите сумму в $"
+            style={{ width: "100%" }}
           />
         </div>
+
+        <p className={styles.info}>
+          Оплата производится в сомах по текущему курсу
+        </p>
       </div>
 
-      <div className={styles.totalInfo}>
-        <span className={styles.totalValue}>
-          {customPrice ? `${customPrice * USD_TO_KGS} СОМ` : "0 СОМ"}
-        </span>
-        <span className={styles.totalValue}>
 
-          {customPrice ? `${customPrice } $` : "0 $"}
-        </span>
+      <div className={styles.totalValue}>
+        {customPrice ? (
+          <>
+            ${customPrice.toLocaleString()} ≈{" "}
+            {Math.round(totalKgs).toLocaleString()} сом
+          </>
+        ) : (
+          "Введите сумму"
+        )}
       </div>
 
       <AppButton

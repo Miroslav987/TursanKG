@@ -7,6 +7,7 @@ import { useState } from "react";
 import TourInfo from "./components/TourInfo";
 import  { Dayjs } from "dayjs";
 import { TourType } from "@entities/tour/model/types";
+import { USD_TO_KGS } from "@entities/tour/config/tours";
 
 type TourBookingProps = {
   tour:TourType
@@ -35,7 +36,7 @@ export const TourBooking = ({ tour }: TourBookingProps) => {
 
       const payload = {
         amount: groupCount * tour.price * 100,
-        currency: "840", 
+        currency: "417", 
         detail,
         language: "EN",
         return_url: returnUrl,
@@ -117,6 +118,7 @@ export const TourBooking = ({ tour }: TourBookingProps) => {
       </div>
 
       <div className={styles.totalInfo}>
+        <span className={styles.totalValue}>{ groupCount * tour.price * USD_TO_KGS } СОМ</span>
         <span className={styles.totalValue}>{ groupCount * tour.price } $</span>
       </div>
 

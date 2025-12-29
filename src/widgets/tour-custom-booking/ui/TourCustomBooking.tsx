@@ -5,6 +5,7 @@ import {  InputNumber, message } from "antd";
 import AppButton from "@shared/ui/AppButton";
 import { useState } from "react";
 import { TourType } from "@entities/tour/model/types";
+import { USD_TO_KGS } from "@entities/tour/config/tours";
 
 type TourBookingProps = {
   tour: TourType;
@@ -31,7 +32,7 @@ export const TourCustomBooking = ({ tour }: TourBookingProps) => {
       const payload = {
        
         amount: customPrice * 100,
-        currency: "840", 
+        currency: "417", 
         detail,
         language: "EN",
         return_url: returnUrl,
@@ -67,13 +68,13 @@ export const TourCustomBooking = ({ tour }: TourBookingProps) => {
 
 
         <div className={styles.field}>
-          <p className={styles.label}>Введите сумму к оплате $</p>
+          <p className={styles.label}>Введите сумму к оплате в СОМ</p>
           <InputNumber
             className={styles.input}
             min={1}
             value={customPrice}
             onChange={(val) => setCustomPrice(val)}
-            placeholder="Введите сумму"
+            placeholder="Введите сумму в СОМ"
             style={{ width: '100%' }}
           />
         </div>
@@ -81,7 +82,11 @@ export const TourCustomBooking = ({ tour }: TourBookingProps) => {
 
       <div className={styles.totalInfo}>
         <span className={styles.totalValue}>
-          {customPrice ? `${customPrice} $` : "0 $"}
+          {customPrice ? `${customPrice * USD_TO_KGS} СОМ` : "0 СОМ"}
+        </span>
+        <span className={styles.totalValue}>
+
+          {customPrice ? `${customPrice } $` : "0 $"}
         </span>
       </div>
 

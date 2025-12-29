@@ -159,6 +159,7 @@ import { TourType } from "../model/types";
 //   }
 // ];
 
+export const USD_TO_KGS = 89;
 
 export const tours: TourType[] = [
   {

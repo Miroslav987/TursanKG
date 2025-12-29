@@ -167,7 +167,7 @@ export const tours: TourType[] = [
     title: "5 дневный тур",
     imgTours: [
       "https://avatars.mds.yandex.net/get-altay/5480011/2a0000017d154fa6982ed3ace100f4dd8358/orig", // Ысык Кол
-      "https://s0.rbk.ru/v6_top_pics/media/img/8/07/347379662848078.webp", // Каркол лыжная база
+      "https://cdn.explorekazakhstan.net/images/tours/48/1500x840_1.webp", // Каркол лыжная база
       "https://img.pac.ru/landmarks/492552/big/70FAF6F87F0001011072832C10E46D5E.jpg",//Джеты огуз
     ],
     description: `
@@ -197,7 +197,7 @@ export const tours: TourType[] = [
     title: "10 дневный тур",
     imgTours: [
       "https://avatars.mds.yandex.net/get-altay/5480011/2a0000017d154fa6982ed3ace100f4dd8358/orig", // Ысык Кол
-      "https://s0.rbk.ru/v6_top_pics/media/img/8/07/347379662848078.webp", // Каркол лыжная база
+      "https://cdn.explorekazakhstan.net/images/tours/48/1500x840_1.webp", // Каркол лыжная база
       "https://img.pac.ru/landmarks/492552/big/70FAF6F87F0001011072832C10E46D5E.jpg",//Джеты огуз
       "https://www.advantour.com/img/kyrgyzstan/lakes/kel-suu-lake.jpg",//Кель-Суу
       "https://too.kg/wp-content/uploads/image_8.jpg",//Таш-Рабат
@@ -249,7 +249,7 @@ export const tours: TourType[] = [
     title: "20 дневный тур",
     imgTours: [
       "https://avatars.mds.yandex.net/get-altay/5480011/2a0000017d154fa6982ed3ace100f4dd8358/orig", // Ысык Кол
-      "https://s0.rbk.ru/v6_top_pics/media/img/8/07/347379662848078.webp", // Каркол лыжная база
+      "https://cdn.explorekazakhstan.net/images/tours/48/1500x840_1.webp", // Каркол лыжная база
       "https://img.pac.ru/landmarks/492552/big/70FAF6F87F0001011072832C10E46D5E.jpg",//Джеты огуз
       "https://www.advantour.com/img/kyrgyzstan/lakes/kel-suu-lake.jpg",//Кель-Суу
       "https://too.kg/wp-content/uploads/image_8.jpg",//Таш-Рабат
@@ -304,7 +304,7 @@ export const tours: TourType[] = [
     title: "30 дневный тур",
     imgTours: [
       "https://avatars.mds.yandex.net/get-altay/5480011/2a0000017d154fa6982ed3ace100f4dd8358/orig", // Ысык Кол
-      "https://s0.rbk.ru/v6_top_pics/media/img/8/07/347379662848078.webp", // Каркол лыжная база
+      "https://cdn.explorekazakhstan.net/images/tours/48/1500x840_1.webp", // Каркол лыжная база
       "https://img.pac.ru/landmarks/492552/big/70FAF6F87F0001011072832C10E46D5E.jpg",//Джеты огуз
       "https://www.advantour.com/img/kyrgyzstan/lakes/kel-suu-lake.jpg",//Кель-Суу
       "https://too.kg/wp-content/uploads/image_8.jpg",//Таш-Рабат

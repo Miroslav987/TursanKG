@@ -86,16 +86,16 @@ export const TourCustomBooking = ({ tour }: TourBookingProps) => {
       </div>
 
 
-      <div className={styles.totalValue}>
-        {customPrice ? (
-          <>
-            ${customPrice.toLocaleString()} ≈{" "}
-            {Math.round(totalKgs).toLocaleString()} сом
-          </>
-        ) : (
-          "Введите сумму"
-        )}
-      </div>
+<div className={styles.totalValue} translate="no"> 
+  {customPrice ? (
+    <>
+      ${customPrice.toLocaleString()} ≈{" "}
+      {Math.round(totalKgs).toLocaleString()} сом
+    </>
+  ) : (
+    "Введите сумму"
+  )}
+</div>
 
       <AppButton
         className={styles.submitBtn}

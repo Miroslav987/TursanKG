@@ -25,11 +25,16 @@ export const navItems:NavItemsType[] =[
                 icon:"phone",
                 path:"https://wa.me/996505150470"
             },
-            // {
-            //     text:"info@websitedemolari.com",
-            //     icon:"email",
-            //     path:""
-            // },
+            {
+                text:"aman.sadyk@gmail.com",
+                icon:"email",
+                path:""
+            },
+            {
+                text:"Индивидуальный предприниматель: Мамбетсадиков Аманбек Болотович",
+                icon:"user",
+                path:""
+            },
         ]
     },
     // {

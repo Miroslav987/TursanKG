@@ -8,12 +8,13 @@ import AppButton from "@shared/ui/AppButton";
 import { tourCustom } from "@widgets/all-tours/ui";
 import { TourCustomBooking } from "@widgets/tour-custom-booking/ui/TourCustomBooking";
 import { useModal } from "@shared/context/Modal";
+import ProfileLink from "@entities/header/ProfileLink";
 
 const NavItems: FC = () => {
   const [active, setActive] = useState<string>("");
   const pathname = usePathname();
   const router = useRouter();
-  const {openModal} = useModal()
+  const { openModal } = useModal();
 
   const navItems = [
     { name: "Главная страница", href: "#" },
@@ -21,7 +22,7 @@ const NavItems: FC = () => {
     { name: "Связаться с нами", href: "#contact_us" },
   ];
 
-const handleClick = (href: string) => {
+  const handleClick = (href: string) => {
     setActive(href);
     const isHomePage = pathname === "/";
 
@@ -40,7 +41,6 @@ const handleClick = (href: string) => {
 
   return (
     <div className={styles.navItems}>
-
       {navItems.map((nav) => (
         <AppButton
           key={nav.href}
@@ -52,7 +52,12 @@ const handleClick = (href: string) => {
           {nav.name}
         </AppButton>
       ))}
-      <AppButton onClick={()=>openModal(<TourCustomBooking tour={tourCustom}/>)}>Выборочный Тур</AppButton>
+      <AppButton
+        onClick={() => openModal(<TourCustomBooking tour={tourCustom} />)}
+      >
+        Выборочный Тур
+      </AppButton>
+      <ProfileLink />
     </div>
   );
 };

@@ -14,7 +14,7 @@ type Props = {
 export default function TourDetails({ tour }: Props) {
   return (
     <div className={`container ${styles.tourDetails}`}>
-      <h2 className={styles.title}>{tour.title}</h2>
+      <h1 className={styles.title}>{tour.title}</h1>
       <div className={styles.galleryAndBooking}>
         <TourGallery images={tour.imgTours} />
 

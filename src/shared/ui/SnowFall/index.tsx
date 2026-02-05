@@ -50,7 +50,7 @@ const Snowfall = ({ count = 200 }: SnowfallProps) => {
         if (this.y > canvas!.height - snowHeight) {
           this.reset();
           // Медленно увеличиваем сугроб (макс 120px)
-          if (snowHeight < 120) snowHeight += 0.02; 
+          // if (snowHeight < 120) snowHeight += 0.02; 
         }
       }
 

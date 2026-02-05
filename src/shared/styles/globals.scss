@@ -1,16 +1,17 @@
-
 @font-face {
   font-family: 'Roboto';
   src: url('../fonts/Roboto.ttf') format('truetype');
   font-style: normal;
   font-weight: normal;
 }
+
 @font-face {
   font-family: 'Roboto-ExtraBold';
   src: url('../fonts/Roboto-ExtraBold.ttf') format('truetype');
   font-style: normal;
   font-weight: normal;
 }
+
 @font-face {
   font-family: 'Montserrat';
   src: url('../fonts/Montserrat.ttf') format('truetype');
@@ -61,17 +62,21 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 main {
-      margin-top: 135px;
-       @media screen and (max-width: 768px) {
-        margin-top: 115px;}
+  margin-top: 135px;
+
+  @media screen and (max-width: 768px) {
+    margin-top: 115px;
+  }
 }
 
 section {
   margin-top: 80px;
-   @media screen and (max-width: 768px) {
+
+  @media screen and (max-width: 768px) {
     margin-top: 30px;
-   }
+  }
 }
 
 * {
@@ -82,12 +87,12 @@ section {
 .container {
   padding: 0 40px;
   max-width: 1440px;
-    margin-left: auto;
+  margin-left: auto;
   margin-right: auto;
 
-            @media screen and (max-width: 768px) {
-                padding: 0 15px;
-    }
+  @media screen and (max-width: 768px) {
+    padding: 0 15px;
+  }
 }
 
 a {
@@ -99,9 +104,12 @@ a {
 h2 {
   font-family: Montserrat;
 }
+
 section[id] {
-  scroll-margin-top: 150px; /* Высота вашего хедера + небольшой запас */
+  scroll-margin-top: 150px;
+  /* Высота вашего хедера + небольшой запас */
 }
+
 // @media (prefers-color-scheme: dark) {
 //   html {
 //     color-scheme: dark;

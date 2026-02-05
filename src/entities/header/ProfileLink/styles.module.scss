@@ -1,0 +1,12 @@
+    .profileLink {
+        margin-left: 20px;
+        padding: 10px;
+        border-radius: 50px;
+        border: 1px solid var(--color-text-secondary);
+        transition: .2s;
+    }
+
+    .profileLink:hover {
+        background: var(--color-background-secondary);
+        filter: invert(1);
+    }

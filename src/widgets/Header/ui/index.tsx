@@ -4,8 +4,7 @@ import { FC } from "react";
 import styles from './styles.module.scss'
 import AppLogo from "@shared/ui/AppLogo";
 import NavItems from "@entities/header/NavItems/ui";
-import BurgerMenu from "@entities/header/BurgerMenu";
-
+import NavItemsMob from "@entities/header/ProfileLink/NavItemsMob/NavItemsMob";
 
 
 const Header: FC= () => {
@@ -14,8 +13,7 @@ const Header: FC= () => {
       <nav className={`${styles.nav} container`}>
         <AppLogo/>
         <NavItems/>
-        <BurgerMenu/>
-      
+        <NavItemsMob/>
       </nav>
     </header>
   );

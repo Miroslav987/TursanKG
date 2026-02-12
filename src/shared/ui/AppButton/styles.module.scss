@@ -13,6 +13,21 @@
   line-height: 100%;
 
 }
+.outlined {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 20px;
+  width: fit-content;
+  height: fit-content;
+  font-weight: 500;
+  border: 2px solid var(--color-btn-cyan);
+  font-size: 24px;
+  border-radius: 6px;
+  color: var(--color-text-primary);
+  background: var(--color-btn-white);
+  line-height: 100%;
+}
 
 .appButton:hover {
   background: var(--color-btn-blue) !important;

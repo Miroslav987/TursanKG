@@ -1,0 +1,44 @@
+.userInfo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    .userAvatar {
+        width: 150px;
+        height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100px;
+        background: var(--color-background-secondary);
+
+        @media screen and (max-width: 600px) {
+            width: 100px;
+            height: 100px;
+        }
+    }
+
+    .info {
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
+        @media screen and (max-width: 600px) {
+            gap: 10px;
+        }
+
+        .name {
+            font-size: 30px;
+            @media screen and (max-width: 600px) {
+                font-style: 24px;
+            }
+        }
+
+        .email {
+            font-size: 24px;
+            color: var(--color-text-medium-grey);
+            @media screen and (max-width: 600px) {
+                font-style: 18px;
+            }
+        }
+    }
+}

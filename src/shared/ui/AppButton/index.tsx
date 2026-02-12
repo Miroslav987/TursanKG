@@ -6,11 +6,12 @@ import styles from './styles.module.scss'
 
 interface AppButtonProps extends ButtonProps {
   className?: string
+  outlined?:boolean
 }
 
-const AppButton: FC<AppButtonProps> = ({ className, children, ...props }) => {
+const AppButton: FC<AppButtonProps> = ({ className,outlined, children, ...props }) => {
   return (
-    <Button className={`${styles.appButton} ${className || ''}`} {...props}>
+    <Button className={`${outlined? styles.outlined:styles.appButton} ${className || ''} `} {...props}>
       {children}
     </Button>
   )

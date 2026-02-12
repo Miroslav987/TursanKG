@@ -1,0 +1,106 @@
+.CardBookedTour {
+    padding: 30px 20px;
+    display: flex;
+    justify-content: space-between;
+    border-width: 2px 2px 7px 2px;
+    border-style: solid;
+    border-color: #E6E6E6;
+    border-radius: 12px;
+
+    .left,
+    .right {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 30px;
+    }
+
+    .left {
+        .name {
+            font-size: 30px;
+            font-weight: 600;
+        }
+
+        .peopleCount {
+            margin-top: 5px;
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--color-text-medium-grey);
+
+            span {
+                color: var(--color-btn-cyan);
+            }
+        }
+
+        .date {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            font-family: "Montserrat";
+            font-weight: 600;
+            font-size: 24px;
+        }
+    }
+
+    .right {
+        .prices {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 10px;
+
+            p {
+                font-family: "Montserrat";
+            }
+
+            p:first-child {
+                font-weight: 600;
+                font-size: 30px;
+
+            }
+
+            p:last-child {
+                font-weight: 500;
+                font-size: 24px;
+                color: var(--color-text-medium-grey);
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+    .CardBookedTour {
+        padding: 20px 10px;
+
+        .left {
+            .name {
+                font-size: 20px;
+            }
+
+            .peopleCount {
+                font-size: 16px;
+            }
+
+            .date {
+                font-size: 18px;
+            }
+        }
+
+        .right {
+            align-items: end;
+
+            .prices {
+                align-items: end;
+
+                p:first-child {
+                    font-size: 20px;
+                }
+
+                p:last-child {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}

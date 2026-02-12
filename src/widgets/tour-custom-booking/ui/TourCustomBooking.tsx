@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./styles.module.scss";
-import { Checkbox, InputNumber, message, Radio } from "antd";
+import { Checkbox, InputNumber, Radio } from "antd";
 import AppButton from "@shared/ui/AppButton";
 import { useState } from "react";
 import { TourType } from "@entities/tour/model/types";
@@ -15,7 +15,7 @@ type TourBookingProps = {
 };
 
 export const TourCustomBooking = ({ tour }: TourBookingProps) => {
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [customPrice, setCustomPrice] = useState<number | null>(null);
   const [bank, setBank] = useState("demir");
 const [acceptedPolicy, setAcceptedPolicy] = useState(false);
@@ -23,6 +23,8 @@ const [acceptedPolicy, setAcceptedPolicy] = useState(false);
   const totalKgs = customPrice ? customPrice * USD_TO_KGS : 0;
 
   const handlePay = async () => {
+    console.log(tour);
+    
     // if (!customPrice || customPrice <= 0) {
     //   message.warning("Пожалуйста, укажите корректную сумму");
     //   return;
@@ -126,7 +128,7 @@ const [acceptedPolicy, setAcceptedPolicy] = useState(false);
 
       <AppButton
         className={styles.submitBtn}
-        loading={loading}
+        // loading={loading}
         onClick={handlePay}
         disabled={!customPrice}
       >

@@ -1,0 +1,17 @@
+.profileBlock {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .profileBtns {
+        display: flex;
+        gap: 100px;
+    }
+    @media screen and (max-width: 600px) { 
+        flex-direction: column;
+        gap: 30px;
+        .profileBtns {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+}

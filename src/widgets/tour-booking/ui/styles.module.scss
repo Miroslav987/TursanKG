@@ -61,6 +61,13 @@
         font-size: 36px;
     }
 
+    .acceptedPolicy {
+        text-align: center;
+        a {
+            text-decoration: underline;
+        }
+    }
+
     .submitBtn {
         margin: auto;
     }

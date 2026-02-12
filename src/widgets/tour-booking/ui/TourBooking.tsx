@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./styles.module.scss";
-import { Checkbox, DatePicker, Radio, Select, message } from "antd";
+import { Checkbox, DatePicker, Radio, Select } from "antd";
 import AppButton from "@shared/ui/AppButton";
 import { useState } from "react";
 import TourInfo from "./components/TourInfo";
@@ -17,7 +17,7 @@ type TourBookingProps = {
 };
 
 export const TourBooking = ({ tour }: TourBookingProps) => {
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [dates, setDates] = useState<[Dayjs, Dayjs] | null>(null);
   const [adults, setAdults] = useState(1);
   const [bank, setBank] = useState("demir");
@@ -134,7 +134,7 @@ const [acceptedPolicy, setAcceptedPolicy] = useState(false);
 
       <AppButton
         className={styles.submitBtn}
-        loading={loading}
+        // loading={loading}
         onClick={handlePay}
         disabled={!acceptedPolicy}
       >

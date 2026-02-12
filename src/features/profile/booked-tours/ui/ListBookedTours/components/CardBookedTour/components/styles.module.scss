@@ -1,0 +1,28 @@
+.status {
+    width: max-content;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 18px;
+  
+  p {
+          filter: brightness(0.5);
+  }
+}
+
+.completed {
+  background: var(--color-green);
+  color: var(--color-green);
+}
+
+.pending {
+    background: var(--color-yellow);
+    color: var(--color-yellow);
+    
+}
+
+.canceled {
+    background: var(--color-red);
+    color: var(--color-red);
+ 
+}

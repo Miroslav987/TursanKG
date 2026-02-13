@@ -1,69 +1,64 @@
 "use client";
 
-import styles from "./styles.module.scss";
-import { Checkbox, InputNumber, Radio } from "antd";
-import AppButton from "@shared/ui/AppButton";
 import { useState } from "react";
+import Link from "next/link";
+import { Checkbox, InputNumber, message } from "antd";
+
+import styles from "./styles.module.scss";
+import AppButton from "@shared/ui/AppButton";
 import { TourType } from "@entities/tour/model/types";
 import { USD_TO_KGS } from "@entities/tour/config/tours";
-import Icon from "@shared/ui/Icon";
-import Link from "next/link";
 import { Routes } from "@shared/consts/routes";
+import { paymentApi } from "@shared/api/payment.service";
 
 type TourBookingProps = {
   tour: TourType;
 };
 
 export const TourCustomBooking = ({ tour }: TourBookingProps) => {
-  // const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [customPrice, setCustomPrice] = useState<number | null>(null);
-  const [bank, setBank] = useState("demir");
-const [acceptedPolicy, setAcceptedPolicy] = useState(false);
+  const [acceptedPolicy, setAcceptedPolicy] = useState(false);
 
   const totalKgs = customPrice ? customPrice * USD_TO_KGS : 0;
 
-  const handlePay = async () => {
-    console.log(tour);
-    
-    // if (!customPrice || customPrice <= 0) {
-    //   message.warning("Пожалуйста, укажите корректную сумму");
-    //   return;
-    // }
+const handlePay = async () => {
+    if (!customPrice || customPrice <= 0) return message.warning("Введите сумму");
+    if (!acceptedPolicy) return message.warning("Примите соглашение");
 
-    // try {
-    //   setLoading(true);
+    try {
+      setLoading(true);
 
-    //   const detail = `${tour.title} | Оплата пользователем`;
-    //   const returnUrl = `${window.location.origin}/payment/result`;
+      const baseUrl = window.location.origin;
 
-    //   const payload = {
-    //     amount: Math.round(totalKgs * 100), // сом * 100
-    //     currency: "417",
-    //     detail,
-    //     language: "EN",
-    //     return_url: returnUrl,
-    //   };
+      const payload = {
+        amount: Number(totalKgs.toFixed(2)),
+        currency: "KGS",                  
+        description: `Оплата тура: ${tour.title} `.slice(0, 100),
+        language: "ru",
+        client_ip: "127.0.0.1",           
+        order_id: `tursan_${Date.now()}`,    
+        success_url: `${baseUrl}/payment/success`,
+        failure_url: `${baseUrl}/payment/failure`,
+      };
 
-    //   const res = await fetch("/api/payment", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify(payload),
-    //   });
+      console.log("🚀 Боевой Payload:", payload);
 
-    //   const data = await res.json();
+      const { data } = await paymentApi.createPayment(payload);
 
-    //   if (!res.ok || !data.proceed_url) {
-    //     message.error("Ошибка при создании оплаты");
-    //     return;
-    //   }
-
-    //   window.location.href = data.proceed_url;
-    // } catch (e) {
-    //   console.error("FULL ERROR 👉", e);
-    //   message.error("Ошибка оплаты");
-    // } finally {
-    //   setLoading(false);
-    // }
+      if (data.pg_status === "ok" && data.pg_redirect_url) {
+        // Уходим на страницу оплаты FreedomPay
+        window.location.href = data.pg_redirect_url;
+      } else {
+        message.error(data.pg_error_description || "Ошибка платежной системы");
+      }
+    } catch (e: any) {
+      console.error("❌ PAYMENT_ERROR:", e.response?.data);
+      const errorMsg = e.response?.data?.detail || "Не удалось создать платеж";
+      message.error(errorMsg);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -91,46 +86,34 @@ const [acceptedPolicy, setAcceptedPolicy] = useState(false);
         </p>
       </div>
 
-            <p>Выберите Банк для оплаты</p>
-      <Radio.Group
-        className={styles.paymentMethod}
-        onChange={(e) => setBank(e.target.value)}
-        value={bank}
-      >
-        <Radio value={"demir"}>
-          <Icon width={100} height={50} name="demir_bank" />
-        </Radio>
-        <Radio value={"freedom"}>
-          <Icon width={100} height={50} name="freedom_bank" />
-        </Radio>
-      </Radio.Group>
-
       <Checkbox
-      className={styles.acceptedPolicy}
-        value={acceptedPolicy}
-        onChange={(e) => setAcceptedPolicy(e.target.value)}
+        className={styles.acceptedPolicy}
+        checked={acceptedPolicy}
+        onChange={(e) => setAcceptedPolicy(e.target.checked)}
       >
-        Я соглашаюсь с {" "}
-        <Link href={Routes.PRIVACE_POLICY}>Политикой Конфиденциальности</Link>
+        Я соглашаюсь с{" "}
+        <Link href={Routes.PRIVACE_POLICY} target="_blank">
+          Политикой Конфиденциальности
+        </Link>
       </Checkbox>
 
-
-<div className={styles.totalValue} translate="no"> 
-  {customPrice ? (
-    <>
-      ${customPrice.toLocaleString()} ≈{" "}
-      {Math.round(totalKgs).toLocaleString()} сом
-    </>
-  ) : (
-    "Введите сумму"
-  )}
-</div>
+      <div className={styles.totalValue} translate="no">
+        {customPrice ? (
+          <>
+            ${customPrice.toLocaleString()} ≈{" "}
+            {Math.round(totalKgs).toLocaleString()} сом
+          </>
+        ) : (
+          "Введите сумму"
+        )}
+      </div>
 
       <AppButton
         className={styles.submitBtn}
-        // loading={loading}
+        loading={loading}
         onClick={handlePay}
         disabled={!customPrice}
+        type="primary"
       >
         Подтвердить и оплатить
       </AppButton>

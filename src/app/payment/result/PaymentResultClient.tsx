@@ -1,100 +1,79 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
-import axios from 'axios';
-import { Result, Spin, Button } from 'antd';
-import styles from './styles.module.scss';
-
-type VerifyResponse = {
-  success: boolean;
-  status_code: number;
-  message?: string;
-};
+import { useEffect, useState } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
+import { Spin, Result, Button } from "antd";
 
 export default function PaymentResultPage() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  // Банк может вернуть paymentId или payment_id
-  const paymentId =
-    searchParams.get('payment_id') || searchParams.get('paymentId');
+  const paymentId = searchParams.get("payment_id");
 
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<boolean | null>(null);
 
   useEffect(() => {
     if (!paymentId) {
-      setError('Платёж не найден');
+      setSuccess(false);
       setLoading(false);
       return;
     }
 
-    const processPayment = async () => {
+    const verify = async () => {
       try {
-        // 1️⃣ Проверяем оплату
-        const verify = await axios.post<VerifyResponse>('/api/payment/verify', {
-          payment_id: paymentId,
+        const res = await fetch("/api/payment/verify", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ payment_id: paymentId }),
         });
 
-        if (!verify.data.success) {
-          setError(verify.data.message || 'Оплата не подтверждена');
-          return;
-        }
-
-        // 2️⃣ Сохраняем заказ
-        await axios.post('/api/orders/create', {
-          payment_id: paymentId,
-          status: 'paid',
-        });
-      } catch {
-        setError('Ошибка подтверждения платежа');
+        const data = await res.json();
+        setSuccess(data.success === true);
+      } catch (e) {
+        console.error("VERIFY ERROR:", e);
+        setSuccess(false);
       } finally {
         setLoading(false);
       }
     };
 
-    processPayment();
+    verify();
   }, [paymentId]);
 
   if (loading) {
     return (
-      <div className={styles.center}>
+      <div style={{ display: "flex", justifyContent: "center", marginTop: 100 }}>
         <Spin size="large" />
-        <p className={styles.text}>Проверяем оплату…</p>
       </div>
     );
   }
 
-  if (error) {
+  if (success) {
     return (
-      <div className={styles.wrapper}>
-        <Result
-          status="error"
-          title="Оплата не прошла"
-          subTitle={error}
-          extra={
-            <Button type="primary" onClick={() => router.push('/')}>
-              На главную
-            </Button>
-          }
-        />
-      </div>
+      <Result
+        status="success"
+        title="Оплата прошла успешно!"
+        subTitle="Спасибо за бронирование тура."
+        extra={[
+          <Button type="primary" key="home" onClick={() => router.push("/")}>
+            На главную
+          </Button>,
+        ]}
+      />
     );
   }
 
   return (
-    <div className={styles.wrapper}>
-      <Result
-        status="success"
-        title="Оплата успешна 🎉"
-        subTitle="Заказ успешно сохранён"
-        extra={
-          <Button type="primary" onClick={() => router.push('/')}>
-            На главную
-          </Button>
-        }
-      />
-    </div>
+    <Result
+      status="error"
+      title="Платёж не прошёл"
+      subTitle="Попробуйте снова или выберите другой способ оплаты."
+      extra={[
+        <Button type="primary" key="retry" onClick={() => router.back()}>
+          Попробовать снова
+        </Button>,
+      ]}
+    />
   );
 }

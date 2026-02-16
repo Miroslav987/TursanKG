@@ -1,10 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   async rewrites() {
+    const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.tursan.kg';
+    
     return [
       {
         source: '/api/:path*',
-        destination: `${process.env.NEXT_PUBLIC_API_URL}/api/:path*`,
+        destination: `${backendUrl}/api/:path*`,
       },
     ];
   },
@@ -12,11 +14,11 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "**", // Разрешает любые домены по HTTPS
+        hostname: "**", 
       },
       {
         protocol: "http",
-        hostname: "**", // Разрешает любые домены по HTTP
+        hostname: "**",
       },
     ],
   },

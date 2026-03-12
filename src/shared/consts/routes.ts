@@ -5,6 +5,7 @@ interface IRoutes {
     TOURS: (id: string | number) => string;
     PRIVACE_POLICY:string
     PUBLIC_OFFER:string
+    BOOKING_TERMS:string
     PROFILE:string
 }
 
@@ -15,5 +16,6 @@ export const Routes: IRoutes = {
     TOURS: (id) => `/tours/${id}/`,
     PRIVACE_POLICY: '/privacy-policy',
     PUBLIC_OFFER: '/public-offer',
+    BOOKING_TERMS: '/booking-terms',
     PROFILE: '/profile',
 }; 
